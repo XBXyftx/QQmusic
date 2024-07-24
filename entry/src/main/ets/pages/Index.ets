@@ -40,6 +40,13 @@ struct Index {
     {img:$rawfile('listitem6.png'),name:'挪威的森林',text:'百万收藏',writer:'伍佰'},
   ]
 
+  @State LDGD:tuiJianGeDan[]=[
+    {img:$rawfile('music5.png'),text:'纪念一代歌后梅艳芳60周年'},
+    {img:$rawfile('music6.png'),text:'追忆张国荣-哥哥的温柔'},
+    {img:$rawfile('music7.png'),text:'情歌王子汪苏泷青春依旧'},
+    {img:$rawfile('music8.png'),text:'为爱痴狂，却到不了彼岸'},
+  ]
+
   build() {
     //根组件
     Column() {
@@ -202,6 +209,42 @@ struct Index {
             }
             .scrollBar(BarState.Off)
             .lanes(3)
+            .listDirection(Axis.Horizontal)
+
+          }
+          .width('100%')
+        }
+        //雷达歌单
+        ListItem(){
+          Column({space:10}){
+            Row(){
+              Text('雷达歌单 只为更懂你 >')
+                .fontSize(20)
+                .fontWeight(FontWeight.Bold)
+              Image($rawfile('sandian.svg'))
+                .width(20)
+            }
+            .width('100%')
+            .justifyContent(FlexAlign.SpaceBetween)
+
+            List({space:10}){
+
+              ForEach(this.LDGD,(item:tuiJianGeDan,index)=>{
+                ListItem(){
+                  Column({space:5}){
+                    Image(item.img)
+                      .width(120)
+                      .borderRadius(10)
+                    Text(item.text)
+                      .width(115)
+                  }
+                }
+
+              })
+
+            }
+            .scrollBar(BarState.Off)
+            .width('100%')
             .listDirection(Axis.Horizontal)
 
           }
