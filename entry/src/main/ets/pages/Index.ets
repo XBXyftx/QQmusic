@@ -1,13 +1,22 @@
-import { Font } from '@ohos.arkui.UIContext';
+interface zhongYangSVG{
+  img:Resource
+  text:string
+}
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  @State ZYSVG:zhongYangSVG[]=[
+    {img:$rawfile('meirituijian.svg'),text:'每日推荐'},
+    {img:$rawfile('sirenfm.svg'),text:'私人FM'},
+    {img:$rawfile('gedan.svg'),text:'歌单'},
+    {img:$rawfile('paihangbang.svg'),text:'排行榜'},
+    {img:$rawfile('youshengshu.svg'),text:'有声书'},
+  ]
 
   build() {
     //根组件
-    Column() {
+    Column({space:20}) {
 
       //置顶栏
       Row({space:10}){
@@ -41,6 +50,23 @@ struct Index {
       }
       .width('100%')
 
+      Image($rawfile('m1.png'))
+        .width('100%')
+        .borderRadius(20)
+
+      //中央SVG列表
+      Row(){
+        ForEach(this.ZYSVG,(item:zhongYangSVG,index)=>{
+          Column({space:5}){
+            Image(item.img)
+              .width(40)
+            Text(item.text)
+          }
+        })
+      }
+      .width('100%')
+      .padding({left:5,right:5})
+      .justifyContent(FlexAlign.SpaceBetween)
     }
     .padding(10)
     .height('100%')
