@@ -86,7 +86,7 @@ struct Index {
         }
         //推荐歌单
         ListItem(){
-          Column(){
+          Column({space:5}){
 
             Row(){
               Text('推荐歌单 >')
@@ -116,8 +116,34 @@ struct Index {
             }
             .listDirection(Axis.Horizontal)
             .width('100%')
+            .scrollBar(BarState.Off)
 
           }
+        }
+        //一秒沦陷
+        ListItem(){
+          Column(){
+            Row(){
+              Row({space:10}){
+                Image($rawfile('refresh.svg'))
+                  .width(20)
+                Text('一秒沦陷 华语经典')
+                  .fontSize(20)
+                  .fontWeight(FontWeight.Bold)
+                //播放按钮
+                Row({space:5}){
+                  Image($rawfile('bo.svg'))
+                    .width(12)
+                    .fillColor(Color.Black)
+                }
+                .padding(5)
+                .borderRadius(6)
+              }
+            }
+            .width('100%')
+            .justifyContent(FlexAlign.SpaceBetween)
+          }
+          .width('100%')
         }
 
       }
