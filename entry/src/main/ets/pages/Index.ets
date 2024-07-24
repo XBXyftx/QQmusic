@@ -20,16 +20,16 @@ struct Index {
 
   @State TJGD:tuiJianGeDan[]=[
     {img:$rawfile('music1.png'),text:'纪念一代歌后梅艳芳60周年'},
-    {img:$rawfile('music1.png'),text:'追忆张国荣-哥哥的温柔'},
-    {img:$rawfile('music1.png'),text:'情歌王子汪苏泷青春依旧'},
-    {img:$rawfile('music1.png'),text:'为爱痴狂，却到不了彼岸'},
+    {img:$rawfile('music2.png'),text:'追忆张国荣-哥哥的温柔'},
+    {img:$rawfile('music3.png'),text:'情歌王子汪苏泷青春依旧'},
+    {img:$rawfile('music4.png'),text:'为爱痴狂，却到不了彼岸'},
   ]
 
   build() {
     //根组件
-    Column({space:20}) {
+    Column() {
 
-      List(){
+      List({space:20}){
         //置顶栏
         ListItem(){
           Row({space:10}){
@@ -86,7 +86,6 @@ struct Index {
         }
         //推荐歌单
         ListItem(){
-
           Column(){
 
             Row(){
@@ -106,16 +105,8 @@ struct Index {
 
           }
         }
+
       }
-
-
-
-
-
-
-
-
-
     }
     .padding(10)
     .height('100%')
