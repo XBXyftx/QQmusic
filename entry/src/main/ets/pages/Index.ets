@@ -6,6 +6,12 @@ interface tuiJianGeDan{
   img:Resource
   text:string
 }
+interface yiMiaoLunXian{
+  img:Resource
+  name:string
+  text:string
+  writer:string
+}
 
 @Entry
 @Component
@@ -23,6 +29,15 @@ struct Index {
     {img:$rawfile('music2.png'),text:'追忆张国荣-哥哥的温柔'},
     {img:$rawfile('music3.png'),text:'情歌王子汪苏泷青春依旧'},
     {img:$rawfile('music4.png'),text:'为爱痴狂，却到不了彼岸'},
+  ]
+
+  @State YMLX:yiMiaoLunXian[]=[
+    {img:$rawfile('listitem1.png'),name:'富士山下',text:'超70%人播放',writer:'陈奕迅'},
+    {img:$rawfile('listitem2.png'),name:'十年',text:'昨日十万播放',writer:'陈奕迅'},
+    {img:$rawfile('listitem3.png'),name:'大鱼',text:'百万红心',writer:'周深'},
+    {img:$rawfile('listitem4.png'),name:'太多',text:'超80%人播放',writer:'陈冠蒲'},
+    {img:$rawfile('listitem5.png'),name:'富士山下',text:'超70%人播放',writer:'陈奕迅'},
+    {img:$rawfile('listitem6.png'),name:'富士山下',text:'超70%人播放',writer:'陈奕迅'},
   ]
 
   build() {
@@ -148,6 +163,14 @@ struct Index {
             }
             .width('100%')
             .justifyContent(FlexAlign.SpaceBetween)
+
+            List({space:10}){
+
+            }
+            .scrollBar(BarState.Off)
+            .lanes(3)
+            .listDirection(Axis.Horizontal)
+
           }
           .width('100%')
         }
