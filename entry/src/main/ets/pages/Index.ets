@@ -2,6 +2,10 @@ interface zhongYangSVG{
   img:Resource
   text:string
 }
+interface tuiJianGeDan{
+  img:Resource
+  text:string
+}
 
 @Entry
 @Component
@@ -14,59 +18,104 @@ struct Index {
     {img:$rawfile('youshengshu.svg'),text:'有声书'},
   ]
 
+  @State TJGD:tuiJianGeDan[]=[
+    {img:$rawfile('music1.png'),text:'纪念一代歌后梅艳芳60周年'},
+    {img:$rawfile('music1.png'),text:'追忆张国荣-哥哥的温柔'},
+    {img:$rawfile('music1.png'),text:'情歌王子汪苏泷青春依旧'},
+    {img:$rawfile('music1.png'),text:'为爱痴狂，却到不了彼岸'},
+  ]
+
   build() {
     //根组件
     Column({space:20}) {
 
-      //置顶栏
-      Row({space:10}){
+      List(){
+        //置顶栏
+        ListItem(){
+          Row({space:10}){
 
-        Image($rawfile('sanxian.svg'))
-          .width(30)
+            Image($rawfile('sanxian.svg'))
+              .width(30)
 
-        //中间搜索栏外层组件
-        Row(){
-          Image($rawfile('sousuo.svg'))
-            .width(20)
-          TextInput({placeholder:'拥抱的梦幻 梅艳芳'})
-            .placeholderColor('#ccc')
-            .backgroundColor(Color.Transparent)
-        }
-        .padding({left:10})
-        .border({
-          width:1,
-          color:'#ccc',
-          radius:20
-        })
-        .layoutWeight(1)
+            //中间搜索栏外层组件
+            Row(){
+              Image($rawfile('sousuo.svg'))
+                .width(20)
+              TextInput({placeholder:'拥抱的梦幻 梅艳芳'})
+                .placeholderColor('#ccc')
+                .backgroundColor(Color.Transparent)
+            }
+            .padding({left:10})
+            .border({
+              width:1,
+              color:'#ccc',
+              radius:20
+            })
+            .layoutWeight(1)
 
-        Image($rawfile('miaofei.svg'))
-          .width(30)
-          .margin({left:10})
+            Image($rawfile('miaofei.svg'))
+              .width(30)
+              .margin({left:10})
 
-        Image($rawfile('maikefeng.svg'))
-          .width(30)
-          .margin({left:10})
-      }
-      .width('100%')
-
-      Image($rawfile('m1.png'))
-        .width('100%')
-        .borderRadius(20)
-
-      //中央SVG列表
-      Row(){
-        ForEach(this.ZYSVG,(item:zhongYangSVG,index)=>{
-          Column({space:5}){
-            Image(item.img)
-              .width(40)
-            Text(item.text)
+            Image($rawfile('maikefeng.svg'))
+              .width(30)
+              .margin({left:10})
           }
-        })
+          .width('100%')
+        }
+        //图片
+        ListItem(){
+          Image($rawfile('m1.png'))
+            .width('100%')
+            .borderRadius(20)
+        }
+        //中央SVG列表
+        ListItem(){
+          Row(){
+            ForEach(this.ZYSVG,(item:zhongYangSVG,index)=>{
+              Column({space:5}){
+                Image(item.img)
+                  .width(40)
+                Text(item.text)
+              }
+            })
+          }
+          .width('100%')
+          .padding({left:5,right:5})
+          .justifyContent(FlexAlign.SpaceBetween)
+        }
+        //推荐歌单
+        ListItem(){
+
+          Column(){
+
+            Row(){
+              Text('推荐歌单 >')
+                .fontSize(20)
+                .fontWeight(FontWeight.Bold)
+              Image($rawfile('sandian.svg'))
+                .width(20)
+            }
+            .justifyContent(FlexAlign.SpaceBetween)
+            .width('100%')
+
+            List({space:10}){
+
+            }
+            .width('100%')
+
+          }
+        }
       }
-      .width('100%')
-      .padding({left:5,right:5})
-      .justifyContent(FlexAlign.SpaceBetween)
+
+
+
+
+
+
+
+
+
     }
     .padding(10)
     .height('100%')
