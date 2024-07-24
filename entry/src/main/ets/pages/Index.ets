@@ -100,7 +100,21 @@ struct Index {
 
             List({space:10}){
 
+              ForEach(this.TJGD,(item:tuiJianGeDan,index)=>{
+                ListItem(){
+                  Column({space:5}){
+                    Image(item.img)
+                      .width(120)
+                      .borderRadius(10)
+                    Text(item.text)
+                      .width(115)
+                  }
+                }
+
+              })
+
             }
+            .listDirection(Axis.Horizontal)
             .width('100%')
 
           }
