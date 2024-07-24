@@ -36,8 +36,8 @@ struct Index {
     {img:$rawfile('listitem2.png'),name:'十年',text:'昨日十万播放',writer:'陈奕迅'},
     {img:$rawfile('listitem3.png'),name:'大鱼',text:'百万红心',writer:'周深'},
     {img:$rawfile('listitem4.png'),name:'太多',text:'超80%人播放',writer:'陈冠蒲'},
-    {img:$rawfile('listitem5.png'),name:'富士山下',text:'超70%人播放',writer:'陈奕迅'},
-    {img:$rawfile('listitem6.png'),name:'富士山下',text:'超70%人播放',writer:'陈奕迅'},
+    {img:$rawfile('listitem5.png'),name:'大海',text:'亿万播放',writer:'陈雨生'},
+    {img:$rawfile('listitem6.png'),name:'挪威的森林',text:'百万收藏',writer:'伍佰'},
   ]
 
   build() {
@@ -137,7 +137,7 @@ struct Index {
         }
         //一秒沦陷
         ListItem(){
-          Column(){
+          Column({space:10}){
             //汉字标题
             Row(){
               Row({space:10}){
@@ -164,7 +164,40 @@ struct Index {
             .width('100%')
             .justifyContent(FlexAlign.SpaceBetween)
 
-            List({space:10}){
+            List({space:20}){
+
+              ForEach(this.YMLX,(item:yiMiaoLunXian,index:number)=>{
+                ListItem(){
+                  Row({space:10}){
+                    Image(item.img)
+                      .width(70)
+                      .borderRadius(10)
+                    Column({space:5}){
+                      Text(item.name)
+                        .fontSize(18)
+                      Row({space:5}){
+                        Text(item.text)
+                          .fontSize(12)
+                          .padding(5)
+                          .backgroundColor('#f4e7e8')
+                          .fontColor('#e65f58')
+                        Text(item.writer)
+                          .fontSize(12)
+                      }
+                    }
+                    .alignItems(HorizontalAlign.Start)
+                    .margin({right:10})
+                    Row(){
+                      Image($rawfile('bofang.svg'))
+                        .width(30)
+                    }
+                    .layoutWeight(1)
+                    .justifyContent(FlexAlign.End)
+                  }
+                  .margin({bottom:20})
+                  .width(270)
+                }
+              })
 
             }
             .scrollBar(BarState.Off)
