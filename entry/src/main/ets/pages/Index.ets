@@ -123,6 +123,7 @@ struct Index {
         //一秒沦陷
         ListItem(){
           Column(){
+            //汉字标题
             Row(){
               Row({space:10}){
                 Image($rawfile('refresh.svg'))
@@ -135,10 +136,15 @@ struct Index {
                   Image($rawfile('bo.svg'))
                     .width(12)
                     .fillColor(Color.Black)
+                  Text('播放')
+                    .fontSize(14)
                 }
                 .padding(5)
                 .borderRadius(6)
+                .backgroundColor('#ffe1e1e5')
               }
+              Image($rawfile('sandian.svg'))
+                .width(20)
             }
             .width('100%')
             .justifyContent(FlexAlign.SpaceBetween)
@@ -147,6 +153,7 @@ struct Index {
         }
 
       }
+      .scrollBar(BarState.Off)
     }
     .padding(10)
     .height('100%')
